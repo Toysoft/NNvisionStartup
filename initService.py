@@ -5,7 +5,7 @@ from crontab import CronTab
 from docker.errors import APIError
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.WARNING)
 
 
 # FIRST PART IS TO RUN THE GOOD CONTAINER VERSION ----------------------------------------------------------------------
