@@ -3,6 +3,9 @@ import os
 import docker
 from crontab import CronTab
 from docker.errors import APIError
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 # FIRST PART IS TO RUN THE GOOD CONTAINER VERSION ----------------------------------------------------------------------
@@ -12,6 +15,7 @@ def update_docker(docker_conf):
     client = docker.from_env()
     # test if container nnvision is running
     if not client.containers.list(filters={'name': 'nnvision'+str(docker_conf['docker_version'])}):
+        logging.warning('good container is not running')
         # stop all containers
         for c in client.containers.list():
             c.stop()
@@ -48,11 +52,14 @@ def update_docker(docker_conf):
                               )
         # clean unused images
         client.images.prune()
+    logging.warning('good container is running Noting special to do')
 
 
 # SECOND PART IS TO CHECK IF REBOOT ------------------------------------------------------------------------------------
 def reboot(docker_conf):
+    logging.warning('enter reboot')
     if docker_conf['reboot']:
+        logging.warning('do reboot')
         os.system('sudo reboot')
 
 
