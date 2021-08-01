@@ -18,6 +18,7 @@ except FileNotFoundError:
 client = docker.from_env()
 # test if container nnvision is running
 if not client.containers.list(filters={'name': 'nnvision'+str(docker_conf['docker_version'])}):
+    client.containers.prune()
     # test if image is existing
     try:
         image = client.images.get('roboticia/nnvision_jetson_nano:'+str(docker_conf['docker_version']))
