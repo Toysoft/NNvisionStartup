@@ -13,7 +13,6 @@ except FileNotFoundError:
     # default version
     docker_conf = {'docker_version': 1.0}
 
-
 # test if container nnvision is running
 client = docker.from_env()
 # test if container nnvision is running
@@ -29,7 +28,9 @@ if not client.containers.list(filters={'name': 'nnvision'+str(docker_conf['docke
                      email='dockerpull@roboticia.com',
                      registry='https://index.docker.io/v1/')
         client.images.pull("roboticia/nnvision_jetson_nano:"+str(docker_conf['docker_version']))
+    # run nnvision
     client.containers.run("roboticia/nnvision_jetson_nano:"+str(docker_conf['docker_version']),
+                          restart_policy={"Name": "on-failure"},
                           entrypoint='/NNvision/python_client/start.sh',
                           name='nnvision'+str(docker_conf['docker_version']),
                           network_mode='host',
@@ -43,7 +44,7 @@ if not client.containers.list(filters={'name': 'nnvision'+str(docker_conf['docke
                                                  'mode': 'rw'},
                                    '/proc/device-tree/chosen': {'bind': '/NNvision/uuid',
                                                                 'mode': 'rw'},
-                                  },
+                                   },
                           detach=True,
                           )
 
