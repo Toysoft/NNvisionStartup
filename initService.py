@@ -6,7 +6,6 @@ from docker.errors import APIError
 
 
 # FIRST PART IS TO RUN THE GOOD CONTAINER VERSION ----------------------------------------------------------------------
-
 # get the version of the image to run
 def update_docker(docker_conf):
     # test if container nnvision is running
@@ -19,7 +18,7 @@ def update_docker(docker_conf):
         client.containers.prune()
         # test if image is existing
         try:
-            image = client.images.get('roboticia/nnvision_jetson_nano:'+str(docker_conf['docker_version']))
+            client.images.get('roboticia/nnvision_jetson_nano:'+str(docker_conf['docker_version']))
         except docker.errors.ImageNotFound:
             # pull the image
             client.login(username='nnvisionpull',
@@ -79,5 +78,3 @@ if __name__ == "__main__":
     update_docker(conf)
     reboot(conf)
     install_update_docker_cron()
-
-
