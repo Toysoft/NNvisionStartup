@@ -28,7 +28,7 @@ if not client.containers.list(filters={'name': 'nnvision'+str(docker_conf['docke
                      email='dockerpull@roboticia.com',
                      registry='https://index.docker.io/v1/')
         client.images.pull("roboticia/nnvision_jetson_nano:"+str(docker_conf['docker_version']))
-    client.container.run("roboticia/nnvision_jetson_nano:"+str(docker_conf['docker_version']),
+    client.containers.run("roboticia/nnvision_jetson_nano:"+str(docker_conf['docker_version']),
                          entrypoint='/NNvision/python_client/start.sh',
                          name='nnvision'+str(docker_conf['docker_version']),
                          network_mode='host',
