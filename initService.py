@@ -30,20 +30,22 @@ if not client.containers.list(filters={'name': 'nnvision'+str(docker_conf['docke
                      registry='https://index.docker.io/v1/')
         client.images.pull("roboticia/nnvision_jetson_nano:"+str(docker_conf['docker_version']))
     client.containers.run("roboticia/nnvision_jetson_nano:"+str(docker_conf['docker_version']),
-                         entrypoint='/NNvision/python_client/start.sh',
-                         name='nnvision'+str(docker_conf['docker_version']),
-                         network_mode='host',
-                         runtime='nvidia',
-                         environment=["NVIDIA_VISIBLE_DEVICES=all", "NVIDIA_DRIVER_CAPABILITIES=compute,utility,video"],
-                         volumes={'/home/nnvision/conf': {'bind': '/NNvision/python_client/settings',
-                                                          'mode': 'rw'},
-                                  '/usr/src/jetson_multimedia_api': {'bind': '/usr/src/jetson_multimedia_api',
-                                                                     'mode': 'rw'},
-                                  'nn_camera': {'bind': '/NNvision/python_client/camera',
-                                                'mode': 'rw'},
-                                  '/proc/device-tree/chosen': {'bind': '/NNvision/uuid',
-                                                               'mode': 'rw'},
-                                  })
+                          entrypoint='/NNvision/python_client/start.sh',
+                          name='nnvision'+str(docker_conf['docker_version']),
+                          network_mode='host',
+                          runtime='nvidia',
+                          environment=["NVIDIA_VISIBLE_DEVICES=all", "NVIDIA_DRIVER_CAPABILITIES=compute,utility,video"],
+                          volumes={'/home/nnvision/conf': {'bind': '/NNvision/python_client/settings',
+                                                           'mode': 'rw'},
+                                   '/usr/src/jetson_multimedia_api': {'bind': '/usr/src/jetson_multimedia_api',
+                                                                      'mode': 'rw'},
+                                   'nn_camera': {'bind': '/NNvision/python_client/camera',
+                                                 'mode': 'rw'},
+                                   '/proc/device-tree/chosen': {'bind': '/NNvision/uuid',
+                                                                'mode': 'rw'},
+                                  },
+                          detach=True,
+                          )
 
 
 # SECOND PART IS TO CHECK IF REBOOT ------------------------------------------------------------------------------------
