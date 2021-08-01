@@ -1,4 +1,5 @@
 import json
+import os
 import docker
 from docker.errors import APIError, TLSParameterError
 
@@ -11,12 +12,15 @@ try:
         docker_conf = json.load(version)
 except FileNotFoundError:
     # default version
-    docker_conf = {'docker_version': 1.0}
+    docker_conf = {'docker_version': 1.0, 'reboot': False}
 
 # test if container nnvision is running
 client = docker.from_env()
 # test if container nnvision is running
 if not client.containers.list(filters={'name': 'nnvision'+str(docker_conf['docker_version'])}):
+    # stop all containers
+    for c in client.containers.list():
+        c.stop()
     client.containers.prune()
     # test if image is existing
     try:
@@ -47,13 +51,16 @@ if not client.containers.list(filters={'name': 'nnvision'+str(docker_conf['docke
                                    },
                           detach=True,
                           )
+    # clean unused images
+    client.images.prune()
 
 
 # SECOND PART IS TO CHECK IF REBOOT ------------------------------------------------------------------------------------
 
+if docker_conf['reboot']:
+    os.system('sudo reboot')
 
-
-# THIRD PART IS TO INSTALL CRON (only first run) -----------------------------------------------------------------------
+# THIRD PART IS TO INSTALL CRON (only important for first run, in case of change manually remove the installed cron) ---
 
 
 
