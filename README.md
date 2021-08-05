@@ -2,8 +2,8 @@
 initial setup for jetson Nano
 
 
-`sudo apt update 
-sudo apt install python3-pip `
+`sudo apt update`
+`sudo apt install python3-pip `
 
 Requirement :
 `pip3 install docker python-crontab`
