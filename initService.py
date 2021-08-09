@@ -23,8 +23,10 @@ def update_docker(docker_conf):
         # test if image is existing
         try:
             client.images.get('roboticia/nnvision_jetson_nano:'+str(docker_conf['docker_version']))
+            logging.warning(f'image {"roboticia/nnvision_jetson_nano:"+str(docker_conf["docker_version"])} is OK')
         except docker.errors.ImageNotFound:
             # pull the image
+            logging.warning(f'Pulling the image {str(docker_conf["docker_version"])}')
             client.login(username='nnvisionpull',
                          password='jouvenciaprotecia69',
                          email='dockerpull@roboticia.com',
@@ -39,7 +41,7 @@ def update_docker(docker_conf):
             network_mode='host',
             runtime='nvidia',
             environment=["NVIDIA_VISIBLE_DEVICES=all", "NVIDIA_DRIVER_CAPABILITIES=compute,utility,video"],
-            volumes={'/home/nnvision/conf': {'bind': '/NNvision/python_client/settings',
+            volumes={'/home/nnvision/conf': {'bind': '/NNvision/python_client/conf',
                                              'mode': 'rw'},
                      '/usr/src/jetson_multimedia_api': {'bind': '/usr/src/jetson_multimedia_api',
                                                         'mode': 'rw'},
