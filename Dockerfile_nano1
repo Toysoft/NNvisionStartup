@@ -32,7 +32,6 @@ RUN git clone git://source.ffmpeg.org/ffmpeg.git -b release/4.2 --depth=1 && \
     wget https://github.com/jocover/jetson-ffmpeg/raw/master/ffmpeg_nvmpi.patch
 
 
-
 RUN git clone https://github.com/AlexeyAB/darknet
 
 RUN cd  darknet  && \
