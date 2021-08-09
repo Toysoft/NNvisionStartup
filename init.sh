@@ -18,3 +18,6 @@ sudo -- bash -c 'echo "swapoff -a" >> /etc/systemd/nvzramconfig.sh'
 ######### give reboot privilege ###############
 sudo -- bash -c 'echo "nnvision ALL=(root) NOPASSWD: /sbin/reboot" >  /etc/sudoers.d/reboot_privilege'
 
+#########
+mkdir conf
+
