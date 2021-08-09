@@ -80,9 +80,10 @@ def install_update_docker_cron():
 if __name__ == "__main__":
     conf = {'docker_version': 1.1, 'reboot': False}
     try:
-        with open("conf/docker.json") as version:
+        with open("../conf/docker.json") as version:
             conf = json.load(version)
     except FileNotFoundError:
+        logging.warning('can not find the docker.json file')
         pass
     update_docker(conf)
     reboot(conf)
