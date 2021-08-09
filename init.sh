@@ -4,7 +4,7 @@ sudo  apt install -y nano curl
 
 ## Get pip : https://pip.pypa.io/en/stable/installing/ ##############################
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python3 get-pip.py
+sudo python3 get-pip.py
 #------------------------------------------------------------------------------------
 
 # INSTALL MINIMAL DEPENDENCIES ############################################################
