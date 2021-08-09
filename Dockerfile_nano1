@@ -25,18 +25,13 @@ RUN pip install psutil Pillow WSDiscovery requests onvif_zeep-roboticia cherrypy
 ENV LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 RUN git clone https://github.com/jocover/jetson-ffmpeg.git && \
-    cd jetson-ffmpeg && \
-    mkdir build && cd build && \
-    cmake .. && \
-    make -j4 && make install && ldconfig
-
+    cd jetson-ffmpeg && mkdir build
 
 RUN git clone git://source.ffmpeg.org/ffmpeg.git -b release/4.2 --depth=1 && \
     cd ffmpeg && \
     wget https://github.com/jocover/jetson-ffmpeg/raw/master/ffmpeg_nvmpi.patch && \
     git apply ffmpeg_nvmpi.patch && \
-    ./configure --enable-nvmpi --enable-nonfree --enable-shared --enable-gpl --enable-libx264 --cc="gcc -fPIC" && \
-    make -j4 && make install && ldconfig
+    ./configure --enable-nvmpi --enable-nonfree --enable-shared --enable-gpl --enable-libx264 --cc="gcc -fPIC"
 
 
 RUN git clone https://github.com/AlexeyAB/darknet
@@ -47,7 +42,10 @@ RUN cd  darknet  && \
 	sed -i '1,10s/OPENCV=.*/OPENCV=1/' Makefile && \
 	sed -i '1,10s/LIBSO=.*/LIBSO=1/' Makefile
 
-# darknet have to be compiled in the container and commit after -> cd darknet && make -j4 && ldconfig
+# darknet adn ffmpeg have to be compiled in the container and commit after -> cd darknet && make -j4 && ldconfig
+# run compile.sh to compile
 
+WORKDIR /NNvision
+COPY ./compile.sh /NNvision/compile.sh
 
 # CMD ["/NNvision/python_client/start.sh"]
