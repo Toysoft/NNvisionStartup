@@ -1,5 +1,5 @@
 #!/bin/bash
-docker run  -it --gpus=all --name nnvision --net=host \
+docker run  -it --entrypoint /bin/bash --gpus=all --name nnvision --net=host \
             -e NVIDIA_VISIBLE_DEVICES=all \
             -e NVIDIA_DRIVER_CAPABILITIES=compute,utility,video  \
             -v /home/nnvision/conf:/NNvision/python_client/conf \
