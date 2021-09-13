@@ -4,8 +4,9 @@ crudini --set /etc/gdm3/custom.conf daemon AutomaticLoginEnable true
 crudini --set /etc/gdm3/custom.conf daemon AutomaticLogin $1
 gsettings set org.gnome.desktop.screensaver lock-enabled false
 chmod -x $(type -p gnome-keyring-daemon)
-
-
+groupadd docker
+usermod -aG docker $USER
+newgrp docker 
 
 touch /home/$1/Documents/runUserInterface.py
 
