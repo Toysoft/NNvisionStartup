@@ -1,11 +1,13 @@
 #Set up de l'UX/UI
 apt install crudini
+apt autoremove
+apt update
 crudini --set /etc/gdm3/custom.conf daemon AutomaticLoginEnable true
 crudini --set /etc/gdm3/custom.conf daemon AutomaticLogin $1
 gsettings set org.gnome.desktop.screensaver lock-enabled false
 chmod -x $(type -p gnome-keyring-daemon)
 groupadd docker
-usermod -aG docker $USER
+usermod -aG docker $1
 newgrp docker 
 
 touch /home/$1/Documents/runUserInterface.py
