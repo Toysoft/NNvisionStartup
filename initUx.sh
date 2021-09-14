@@ -1,16 +1,7 @@
 #Set up de l'UX/UI
-apt install crudini
-apt autoremove
-apt update
-chmod -x $(type -p gnome-keyring-daemon)
-crudini --set /etc/gdm3/custom.conf daemon AutomaticLoginEnable true
-crudini --set /etc/gdm3/custom.conf daemon AutomaticLogin $1
-sed -i -r "s/(\S*)\s*=\s*(.*)/\1=\2/g" /etc/gdm3/custom.conf
-gsettings set org.gnome.desktop.screensaver lock-enabled false
-groupadd docker
-usermod -aG docker $1
-newgrp docker 
-su $1
+
+
+###################///////////////////FICHIERS D'OUVERTURE DE LA PAGE RESIDENT////////////////////////###############################
 touch /home/$1/Documents/runUserInterface.py
 
 echo "#!/usr/bin/env python3
@@ -46,3 +37,24 @@ Name=LXTerminal
 Type=Application
 Exec=/home/$1/Documents/runUserInterface.py
 " > ~/.config/autostart
+
+#####################################////////////////////////////////////////////////////////////###################################
+
+
+
+apt install crudini
+apt autoremove
+apt update
+crudini --set /etc/gdm3/custom.conf daemon AutomaticLoginEnable true
+crudini --set /etc/gdm3/custom.conf daemon AutomaticLogin $1
+sed -i -r "s/(\S*)\s*=\s*(.*)/\1=\2/g" /etc/gdm3/custom.conf
+gsettings set org.gnome.desktop.screensaver lock-enabled false
+
+
+
+
+#Set up des permissions docker pour lancer initService.py
+groupadd docker
+usermod -aG docker $1
+newgrp docker 
+chmod -x $(type -p gnome-keyring-daemon)
