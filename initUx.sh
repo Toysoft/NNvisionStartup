@@ -16,7 +16,7 @@ firefox = '/usr/bin/firefox %s'
 key = keyLoader["'"'"key"'"'"]
 address = f'https://dev.jouvencia.net/app4/auth/{key}/'
 os.system('export DISPLAY=:1')
-subprocess.run(['/usr/bin/chromium-browser', '--no-sandbox', '--kiosk', address])
+subprocess.run(['/usr/bin/chromium-browser', '--no-sandbox', '--disable-features=Translate', '--kiosk', address])
 
 
 " > /home/$1/Documents/runUserInterface.py
