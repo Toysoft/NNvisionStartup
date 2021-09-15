@@ -41,20 +41,20 @@ Exec=/home/$1/Documents/runUserInterface.py
 #####################################////////////////////////////////////////////////////////////###################################
 
 
+#Set up des permissions docker pour lancer initService.py
+groupadd docker
+usermod -aG docker $1
+newgrp docker 
 
 apt install crudini
 apt autoremove
 apt update
+apt upgrade
+apt autoremove
 crudini --set /etc/gdm3/custom.conf daemon AutomaticLoginEnable true
 crudini --set /etc/gdm3/custom.conf daemon AutomaticLogin $1
 sed -i -r "s/(\S*)\s*=\s*(.*)/\1=\2/g" /etc/gdm3/custom.conf
 gsettings set org.gnome.desktop.screensaver lock-enabled false
 
-
-
-
-#Set up des permissions docker pour lancer initService.py
-groupadd docker
-usermod -aG docker $1
-newgrp docker 
 chmod -x $(type -p gnome-keyring-daemon)
+
