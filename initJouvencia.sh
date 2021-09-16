@@ -20,4 +20,9 @@ sudo -- bash -c 'echo "nnvision ALL=(root) NOPASSWD: /sbin/reboot" >  /etc/sudoe
 
 #########
 mkdir /home/nnvision/conf
-
+touch /home/nnvision/conf/settingslocal.py
+echo "
+INIT_PASS = 'jznsjoa3z54d'
+SERVER_WS = 'wss://dev.jouvencia.net/'
+SERVER = 'https://dev.jouvencia.net/'
+" >/home/nnvision/conf/settingslocal.py
