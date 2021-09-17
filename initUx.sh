@@ -9,12 +9,14 @@ import os
 import json
 import webbrowser
 import subprocess
+import sys
 with open('/home/nnvision/conf/conf.json') as n:
     keyLoader = json.load(n)
-
+sys.path.append("'"'"/home/nnvision/conf"'"'")
+from settingslocal import *
 firefox = '/usr/bin/firefox %s'
 key = keyLoader["'"'"key"'"'"]
-address = f'https://dev.jouvencia.net/app4/auth/{key}/'
+address = f'{SERVER}app4/auth/{key}/'
 os.system('export DISPLAY=:1')
 subprocess.run(['/usr/bin/chromium-browser', '--no-sandbox','--lang-fr', '--disable-features=Translate', '--kiosk', address])
 
@@ -57,6 +59,15 @@ gsettings set org.gnome.desktop.session idle-delay 0
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'nothing'
 
 mv /usr/bin/gnome-keyring-daemon /usr/bin/gnome-keyring-daemon.bak
+
+rm /etc/default/apport
+touch /etc/default/apport
+echo "# set this to 0 to disable apport, or to 1 to enable it
+# you can temporarily override this with
+# sudo service apport start force_start=1
+enabled=0
+
+" > /etc/default/apport
 
 #Set up des permissions docker pour lancer initService.py
 groupadd docker

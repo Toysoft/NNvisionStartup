@@ -28,10 +28,3 @@ SERVER = 'https://dev.jouvencia.net/'
 " >/home/nnvision/conf/settingslocal.py
 
 touch /home/nnvision/conf/__init__.py
-
-touch /home/nnvision/conf/settingslocalprod.py
-echo "
-INIT_PASS = 'jznsjoa3z54d'
-SERVER_WS = 'wss://mdm.jouvencia.net/'
-SERVER = 'https://mdm.jouvencia.net/'
-" >/home/nnvision/conf/settingslocal.py
