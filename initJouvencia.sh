@@ -26,3 +26,4 @@ INIT_PASS = 'jznsjoa3z54d'
 SERVER_WS = 'wss://dev.jouvencia.net/'
 SERVER = 'https://dev.jouvencia.net/'
 " >/home/nnvision/conf/settingslocal.py
+touch /home/nnvision/conf/__init__.py
