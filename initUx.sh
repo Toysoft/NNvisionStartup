@@ -29,7 +29,7 @@ touch /home/$1/Documents/runUserInterface.desktop
 echo "[Desktop Entry]
 Name=LXTerminal
 Type=Application
-Exec=/home/$1/Documents/runUserInterface.py
+Exec=lxterminal -e /home/$1/Documents/runUserInterface.py
 " > /home/$1/Documents/runUserInterface.desktop
 
 cp /home/$1/Documents/runUserInterface.desktop /etc/xdg/autostart/runUserInterface.desktop
@@ -37,7 +37,7 @@ touch ~/.config/autostart
 echo "[Desktop Entry]
 Name=LXTerminal
 Type=Application
-Exec=/home/$1/Documents/runUserInterface.py
+Exec=lxterminal -e /home/$1/Documents/runUserInterface.py
 " > ~/.config/autostart
 
 #####################################////////////////////////////////////////////////////////////##############################
