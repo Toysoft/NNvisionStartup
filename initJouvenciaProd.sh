@@ -22,7 +22,7 @@ sudo -- bash -c 'echo "nnvision ALL=(root) NOPASSWD: /sbin/reboot" >  /etc/sudoe
 mkdir /home/nnvision/conf
 touch /home/nnvision/conf/settingslocal.py
 echo "
-INIT_PASS = 'jznsjoa3z54d'
+INIT_PASS = 'gOX8983zqQg'
 SERVER_WS = 'wss://mdm.jouvencia.net/'
 SERVER = 'https://mdm.jouvencia.net/'
 " >/home/nnvision/conf/settingslocal.py
