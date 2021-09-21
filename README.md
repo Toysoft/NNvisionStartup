@@ -27,8 +27,13 @@ Accepter les demandes, ignorer les avertissement.
 Patienter le temps que l'image se télécharge 
 
 
-5 : 	-Se rendre sur l'interface administrateur puis dans résidences 
-	-Choisir la résidence dans laquelle on veut initialiser la jetson 
-	-Dans le menu déroulant "machineid" sélectionner la jetson configurée 
-	-Dans le menu déroulant "version" vérifier que la version demandée soit égale à la version actuellement utilisée en prod (Dans le cas d'une première installation elle doit toujours être supérieure à 1.0 !) 
+5 :
+-> Se rendre sur l'interface administrateur puis dans résidences 
+
+-> Choisir la résidence dans laquelle on veut initialiser la jetson 
+
+-> Dans le menu déroulant "machineid" sélectionner la jetson configurée 
+
+-> Dans le menu déroulant "version" vérifier que la version demandée soit égale à la version actuellement utilisée en prod (Dans le cas d'une première installation elle doit toujours être supérieure à 1.0 !) 
+
 	
