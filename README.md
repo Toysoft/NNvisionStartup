@@ -17,4 +17,5 @@ add line :
 nnvision ALL=(root) NOPASSWD: /sbin/reboot
 
 1 - bash init.sh
+
 2 - python3 initService.py
