@@ -19,5 +19,12 @@ sudo -- bash -c 'echo "swapoff -a" >> /etc/systemd/nvzramconfig.sh'
 sudo -- bash -c 'echo "nnvision ALL=(root) NOPASSWD: /sbin/reboot" >  /etc/sudoers.d/reboot_privilege'
 
 #########
-mkdir conf
+mkdir /home/nnvision/conf
+touch /home/nnvision/conf/settingslocal.py
+echo "
+INIT_PASS = 'jznsjoa3z54d'
+SERVER_WS = 'wss://dev.jouvencia.net/'
+SERVER = 'https://dev.jouvencia.net/'
+" >/home/nnvision/conf/settingslocal.py
 
+touch /home/nnvision/conf/__init__.py
