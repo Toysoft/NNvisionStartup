@@ -4,11 +4,11 @@ sudo  apt install -y nano curl
 
 ## Get pip : https://pip.pypa.io/en/stable/installing/ ##############################
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-sudo python3 get-pip.py
+python3 get-pip.py
 #------------------------------------------------------------------------------------
 
 # INSTALL MINIMAL DEPENDENCIES ############################################################
-sudo pip3 install docker python-crontab
+pip3 install docker python-crontab
 
 
 ########## swapoff
@@ -20,6 +20,7 @@ sudo -- bash -c 'echo "nnvision ALL=(root) NOPASSWD: /sbin/reboot" >  /etc/sudoe
 
 ######### give nnvision docker permission ###############
 sudo -- bash -c "usermod -aG docker nnvision"
+newgrp docker
 
 #########
 mkdir /home/nnvision/conf
