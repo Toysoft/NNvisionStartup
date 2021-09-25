@@ -18,6 +18,9 @@ sudo -- bash -c 'echo "swapoff -a" >> /etc/systemd/nvzramconfig.sh'
 ######### give reboot privilege ###############
 sudo -- bash -c 'echo "nnvision ALL=(root) NOPASSWD: /sbin/reboot" >  /etc/sudoers.d/reboot_privilege'
 
+######### give nnvision docker permission ###############
+sudo -- bash -c "usermod -aG docker nnvision"
+
 #########
 mkdir /home/nnvision/conf
 touch /home/nnvision/conf/settingslocal.py
