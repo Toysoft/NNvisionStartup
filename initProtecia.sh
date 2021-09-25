@@ -27,8 +27,8 @@ mkdir /home/nnvision/conf
 touch /home/nnvision/conf/settingslocal.py
 echo "
 INIT_PASS = 'gOX8983zqQg'
-SERVER_WS = 'wss://dev.protecia.net/'
-SERVER = 'https://dev.protecia.net/'
+SERVER_WS = 'wss://dev.protecia.com/'
+SERVER = 'https://dev.protecia.com/'
 " >/home/nnvision/conf/settingslocal.py
 
 touch /home/nnvision/conf/__init__.py
