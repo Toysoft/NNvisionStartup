@@ -12,7 +12,13 @@ sudo pip3 install docker python-crontab
 
 
 ########## swapoff
-sudo -- bash -c 'echo "swapoff -a" >> /etc/systemd/nvzramconfig.sh'
+if grep "swapoff -a" /etc/systemd/nvzramconfig.sh
+then
+    # code if found
+else
+    sudo -- bash -c 'echo "swapoff -a" >> /etc/systemd/nvzramconfig.sh'
+fi
+
 
 
 ######### give reboot privilege ###############
