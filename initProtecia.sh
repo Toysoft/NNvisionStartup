@@ -22,7 +22,6 @@ sudo -- bash -c 'echo "nnvision ALL=(root) NOPASSWD: /sbin/reboot" >  /etc/sudoe
 
 ######### give nnvision docker permission ###############
 sudo -- bash -c "usermod -aG docker nnvision"
-newgrp docker
 
 #########
 mkdir /home/nnvision/conf
