@@ -1,4 +1,4 @@
-from nvcr.io/nvidia/cuda:11.3.1-cudnn8-devel
+from nvcr.io/nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
 
 RUN apt-get update && apt-get install -y apt-utils && rm -rf /var/lib/apt/lists/*
 
