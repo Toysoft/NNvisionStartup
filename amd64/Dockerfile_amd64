@@ -1,4 +1,4 @@
-from nvcr.io/nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
+from nvcr.io/nvidia/cuda:11.2.2-cudnn8-devel-ubuntu20.04
 
 RUN apt-get update && apt-get install -y apt-utils && rm -rf /var/lib/apt/lists/*
 
@@ -30,4 +30,8 @@ RUN cd  darknet  && \
 	sed -i '1,10s/GPU=.*/GPU=1/' Makefile && \
 	sed -i '1,10s/CUDNN=.*/CUDNN=1/' Makefile && \
 	sed -i '1,10s/OPENCV=.*/OPENCV=1/' Makefile && \
-	sed -i '1,10s/LIBSO=.*/LIBSO=1/' Makefile 
+	sed -i '1,10s/LIBSO=.*/LIBSO=1/' Makefile
+
+# compile darknet
+
+

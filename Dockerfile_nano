@@ -9,7 +9,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-tzdata libxml2-dev libxslt-dev \
+               tzdata libxml2-dev libxslt-dev \
                wget mlocate build-essential openssh-client sshpass\
                nano cron yasm cmake libjpeg-dev autossh \
                libpng-dev libtiff-dev libavcodec-dev libavformat-dev \
@@ -40,7 +40,7 @@ RUN cd  darknet  && \
 	sed -i '1,10s/OPENCV=.*/OPENCV=1/' Makefile && \
 	sed -i '1,10s/LIBSO=.*/LIBSO=1/' Makefile
 
-# darknet adn ffmpeg have to be compiled in the container and commit after -> cd darknet && make -j4 && ldconfig
+# darknet and ffmpeg have to be compiled in the container and commit after -> cd darknet && make -j4 && ldconfig
 # run compile.sh to compile
 
 WORKDIR /NNvision
