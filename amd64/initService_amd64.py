@@ -52,7 +52,7 @@ def update_docker(docker_conf):
                               )
         # clean unused images
         client.images.prune()
-    logging.warning('good container is running Noting special to do')
+    logging.warning('good container is running Nothing special to do')
 
 
 # SECOND PART IS TO CHECK IF REBOOT ------------------------------------------------------------------------------------
@@ -76,9 +76,9 @@ def install_update_docker_cron():
 
 
 if __name__ == "__main__":
-    conf = {'docker_version': 1.0, 'reboot': False}
+    conf = {'docker_version': 1.2, 'reboot': False}
     try:
-        with open("../conf/docker.json") as version:
+        with open("../../conf/docker.json") as version:
             conf = json.load(version)
     except FileNotFoundError:
         logging.warning('can not find the docker.json file')
