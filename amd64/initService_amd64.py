@@ -67,8 +67,8 @@ def reboot(docker_conf):
 def install_update_docker_cron():
     cron = CronTab(user=True)
     if not any(cron.find_command('initService')):
-        cmd = "sleep 200 && cd /home/nnvision/NNvisionStartup && "
-        cmd += 'python3 /home/nnvision/NNvisionStartup/initService.py'
+        cmd = "sleep 200 && cd /home/nnvision/NNvisionStartup/amd64/ && "
+        cmd += 'python3 /home/nnvision/NNvisionStartup/amd64/initService_amd64.py'
         cmd += " > /home/nnvision/cron_service.log 2>&1&"
         job = cron.new(command=cmd)
         job.minute.every(2)
