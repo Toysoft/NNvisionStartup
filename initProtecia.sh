@@ -23,6 +23,9 @@ sudo -- bash -c 'echo "nnvision ALL=(root) NOPASSWD: /sbin/reboot" >  /etc/sudoe
 ######### give nnvision docker permission ###############
 sudo -- bash -c "usermod -aG docker nnvision"
 
+######### deactivate graphics mode ######################
+sudo systemctl set-default multi-user.target
+
 #########
 mkdir /home/nnvision/conf
 touch /home/nnvision/conf/settingslocal.py
