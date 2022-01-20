@@ -17,6 +17,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
                libgtk-3-dev libatlas-base-dev gfortran libpq-dev curl fail2ban \
                libyaml-cpp-dev libeigen3-dev pkg-config libssl-dev zlib1g curl
 
+RUN apt remove --purge --auto-remove cmake && get https://github.com/Kitware/CMake/releases/download/v3.20.3/cmake-3.20.3.tar.gz
+
 WORKDIR /NNvision
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py
