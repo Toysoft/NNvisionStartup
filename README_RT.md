@@ -44,6 +44,10 @@ cd ..
 here duplicate the yolo4.cpp and rename it with your custom_yolo name
 open this file with nano and edited like this
 
+# edit yolo4.cpp 
+# bin_path = custom_yolo
+# cfg_path = / 
+# names_path = /
 
 
 Exit nano
@@ -61,6 +65,8 @@ cd ..
 should be again in /tkDNN folder
 
 git clone https://git.hipert.unimore.it/fgatti/darknet.git
+# if certifcate fail :
+apt install --reinstall ca-certificates
 cd darknet
 make
 mkdir layers debug
