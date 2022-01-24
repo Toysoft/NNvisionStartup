@@ -31,7 +31,7 @@ def update_docker(docker_conf):
                          password='jouvenciaprotecia69',
                          email='dockerpull@roboticia.com',
                          registry='https://index.docker.io/v1/')
-            client.images.pull("nnvision_client_amd64:"+str(docker_conf['docker_version']))
+            client.images.pull("roboticia/nnvision_client_amd64:"+str(docker_conf['docker_version']))
         # run nnvision
         client.containers.run(
             "roboticia/nnvision_client_amd64:"+str(docker_conf['docker_version']),
