@@ -14,7 +14,15 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
                nano cron yasm cmake libjpeg-dev autossh \
                libpng-dev libtiff-dev libavcodec-dev libavformat-dev \
                libswscale-dev libv4l-dev libxvidcore-dev libx264-dev  \
-               libgtk-3-dev libatlas-base-dev gfortran libpq-dev curl fail2ban
+               libgtk-3-dev libatlas-base-dev gfortran libpq-dev curl fail2ban \
+               libyaml-cpp-dev libeigen3-dev pkg-config libssl-dev zlib1g curl
+
+RUN apt remove --purge --auto-remove cmake && wget https://github.com/Kitware/CMake/releases/download/v3.20.3/cmake-3.20.3.tar.gz &&
+    tar xvf cmake-3.20.3.tar.gz && cd cmake-3.20.3/ && ./configure && make -j$(nproc) && make install &&
+    ln -s /usr/local/bin/cmake /usr/bin/cmake
+
+git clone
+git clone https:/github.com/jouvencia/tkDNN.git
 
 WORKDIR /NNvision
 
