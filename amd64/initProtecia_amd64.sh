@@ -24,6 +24,14 @@ sudo -- bash -c 'echo "nnvision ALL=(root) NOPASSWD: /sbin/reboot" >  /etc/sudoe
 sudo -- bash -c "groupadd docker"
 sudo -- bash -c "usermod -aG docker nnvision"
 
+######## nvidia-docker ##########
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+sudo apt-get update
+sudo apt-get install -y nvidia-docker2
+sudo systemctl restart docker
+
 #########
 mkdir /home/nnvision/conf
 touch /home/nnvision/conf/settingslocal.py
@@ -32,5 +40,12 @@ INIT_PASS = 'gOX8983zqQg'
 SERVER_WS = 'wss://dev.protecia.com/'
 SERVER = 'https://dev.protecia.com/'
 " >/home/nnvision/conf/settingslocal.py
+
+#########
+mkdir /home/nnvision/uuid
+touch /home/nnvision/uuid/uuid
+echo "
+zepofkpzoekfpozkcvzeopkbfgklsvd
+" >/home/nnvision/uuid/uuid
 
 touch /home/nnvision/conf/__init__.py
