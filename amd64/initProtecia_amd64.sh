@@ -21,6 +21,7 @@ fi
 sudo -- bash -c 'echo "nnvision ALL=(root) NOPASSWD: /sbin/reboot" >  /etc/sudoers.d/reboot_privilege'
 
 ######### give nnvision docker permission ###############
+sudo -- bash -c "groupadd docker"
 sudo -- bash -c "usermod -aG docker nnvision"
 
 #########
