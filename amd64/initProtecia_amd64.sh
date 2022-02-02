@@ -1,6 +1,6 @@
 sudo apt update
 export DEBIAN_FRONTEND=noninteractive
-sudo  apt install -y nano curl python3-testresources python3-distutils
+sudo  apt install -y nano curl python3-testresources python3-distutils autossh
 
 ## Get pip : https://pip.pypa.io/en/stable/installing/ ##############################
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
@@ -8,7 +8,7 @@ sudo python3 get-pip.py
 #------------------------------------------------------------------------------------
 
 # INSTALL MINIMAL DEPENDENCIES ############################################################
-sudo pip3 install docker python-crontab
+sudo pip3 install docker python-crontab psutil
 
 
 ########## swapoff
