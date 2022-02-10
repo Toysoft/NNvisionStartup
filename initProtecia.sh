@@ -3,7 +3,7 @@ export DEBIAN_FRONTEND=noninteractive
 sudo  apt install -y nano curl python3-testresources
 
 ## Get pip : https://pip.pypa.io/en/stable/installing/ ##############################
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+curl https://bootstrap.pypa.io/pip/3.6/get-pip.py -o get-pip.py
 sudo python3 get-pip.py
 #------------------------------------------------------------------------------------
 
