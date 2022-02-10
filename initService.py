@@ -78,7 +78,7 @@ def install_update_docker_cron():
 
 
 if __name__ == "__main__":
-    conf = {'docker_version': 1.1, 'reboot': False}
+    conf = {'docker_version': 1.5, 'reboot': False}
     try:
         with open("../conf/docker.json") as version:
             conf = json.load(version)
