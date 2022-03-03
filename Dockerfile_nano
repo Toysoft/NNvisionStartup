@@ -25,7 +25,7 @@ RUN git clone https://github.com/jouvencia/tkDNN.git
 
 WORKDIR /NNvision
 
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py
+RUN curl https://bootstrap.pypa.io/3.6/get-pip.py -o get-pip.py && python3 get-pip.py
 
 # before it was onvif_zeep-roboticia
 RUN pip install psutil Pillow requests zeep onvif_zeep cherrypy python-crontab websockets filelock
