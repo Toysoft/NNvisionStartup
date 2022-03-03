@@ -21,7 +21,7 @@ RUN apt remove -y --purge --auto-remove cmake && wget https://github.com/Kitware
     tar xvf cmake-3.20.3.tar.gz && cd cmake-3.20.3/ && ./configure && make -j$(nproc) && make install && \
     ln -s /usr/local/bin/cmake /usr/bin/cmake
 
-RUN git clone https:/github.com/jouvencia/tkDNN.git
+RUN git clone https://github.com/jouvencia/tkDNN.git
 
 WORKDIR /NNvision
 
