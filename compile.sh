@@ -1,5 +1,5 @@
 cd jetson-ffmpeg
-cmake ..
+cmake .
 make -j4
 make install
 ldconfig
