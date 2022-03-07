@@ -3,6 +3,7 @@ cmake .
 make -j4
 make install
 ldconfig
+sleep 2
 
 cd ffmpeg
 git apply ffmpeg_nvmpi.patch
@@ -10,6 +11,7 @@ git apply ffmpeg_nvmpi.patch
 make -j4
 make install
 ldconfig
+sleep 2
 
 cd darknet
 make -j4
