@@ -10,9 +10,15 @@
     cd tkDNN/tests/darknet/cfg/
 cp the cfg file of your custom_yolo in this folder
 
+
     cd ../names/
 
 cp your custom_yolo.names file inside this folder
+Using gdown is a nice way to get files from google drive : 
+
+    gdown --id 1FuUl2YlINWLsQTqw8Ba8IIW8ho7DeOe1 --output room_detector.names
+
+Now make your weights folder
 
     cd ..
     mkdir weights
@@ -37,7 +43,8 @@ Exit nano
 
     cd ../.. 
 
-(you should be in tkDNN folder)
+You should be in tkDNN folder.
+For Jetpack 4.6 with TensorRT 8 you should choose the branch tensorrt8 to compile the repo.
 
     mkdir build
     cd build
