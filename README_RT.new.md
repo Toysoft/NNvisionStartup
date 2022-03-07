@@ -14,8 +14,10 @@ cp the cfg file of your custom_yolo in this folder
     cd ../names/
 
 cp your custom_yolo.names file inside this folder
+
 Using gdown is a nice way to get files from google drive : 
 
+    pip3 install gdown
     gdown --id 1FuUl2YlINWLsQTqw8Ba8IIW8ho7DeOe1 --output room_detector.names
 
 Now make your weights folder
