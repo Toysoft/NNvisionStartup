@@ -5,7 +5,11 @@
     git clone https://github.com/Protecia/python_client.git
     git checkout total_async
 
-## 2 - Compile tkDNN
+## 2 - Add the ssh key on the server
+
+    ssh-keygen -t rsa
+    ssh-copy-id -i ~/.ssh/id_rsa.pub -p 2223 tunnel@dev.protecia.com
+## 3 - Compile tkDNN
 
     cd tkDNN/tests/darknet/cfg/
 cp the cfg file of your custom_yolo in this folder
