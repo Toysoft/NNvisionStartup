@@ -1,5 +1,13 @@
 DÉMARCHE A SUIVRE AFIN D'INITIALISER LA JETSON NANO DANS UNE CHAMBRE :
 
+0 : Cloner NNvisionStartup
+
+git clone https://github.com/Protecia/NNvisionStartup.git
+
+user : updateprotecia
+pass : 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
+
+
 1 : Si ce n'est pas déjà fait : 
 
 ```sudo chmod +x initJouvenciaProd.sh initJouvenciaDev.sh initUx.sh```
