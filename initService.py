@@ -49,6 +49,10 @@ def update_docker(docker_conf):
                                    'mode': 'rw'},
                      '/proc/device-tree/chosen': {'bind': '/NNvision/uuid',
                                                   'mode': 'rw'},
+                     '/home/nnvision/NNvisionStartup': {'bind': '/NNvision/boitier/NNvisionStartup',
+                                                        'mode': 'rw'},
+                     '/etc/cron.d': {'bind': '/NNvision/crontab',
+                                     'mode': 'rw'}
                      },
             detach=True,
                               )
