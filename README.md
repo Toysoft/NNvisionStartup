@@ -35,6 +35,16 @@ VERSION AVANCÉE
 <br/>
 
 
+
+0 : Cloner NNvisionStartup
+
+git clone https://github.com/Protecia/NNvisionStartup.git
+
+user : updateprotecia
+
+pass : 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
+
+
 1 : Copier les scripts dans ```/home/nnvision```
 (L'architecture doit être comme ci dessous :
 ```/home/nnvision/NNvisionStartup```)
