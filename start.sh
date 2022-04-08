@@ -6,4 +6,4 @@ docker run  -it --entrypoint /bin/bash --gpus=all --name nnvision --net=host \
             -v /usr/src/jetson_multimedia_api:/usr/src/jetson_multimedia_api \
             -v nn_camera:/NNvision/python_client/camera \
             -v /proc/device-tree/chosen:/NNvision/uuid \
-            --rm roboticia/nnvision_jetson_nano:1.4
+            --rm roboticia/nnvision_jetson_nano:$1

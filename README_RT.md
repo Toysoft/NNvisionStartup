@@ -1,15 +1,31 @@
 # Finish action to build nnvision image after running Dockerfile_nano_xavier
 
-## 1 - Clone the python_client repo
+## 1 - Compile Darknet, ffmpeg and jetson-ffmpeg
+
+Start the base container :
+
+    bash start_compile.sh
+
+When in the container launch the compile script :
+
+    bash compile.sh
+
+## 2 - Clone the python_client repo
 
     git clone https://github.com/Protecia/python_client.git
-    git checkout total_async
 
-## 2 - Add the ssh key on the server
+
+## 3 - Add the ssh key on the server
 
     ssh-keygen -t rsa
     ssh-copy-id -i ~/.ssh/id_rsa.pub -p 2223 tunnel@dev.protecia.com
-## 3 - Compile tkDNN
+    ssh-copy-id -i ~/.ssh/id_rsa.pub -p 2223 tunnel@mdm.jouvencia.net
+
+It is recommended to make a saved image at this point :
+
+    docker commit nnvision roboticia/nnvision_jetson_nano:2.1
+
+## 4 - Compile tkDNN
 
     cd tkDNN/tests/darknet/cfg/
 cp the cfg file of your custom_yolo in this folder
