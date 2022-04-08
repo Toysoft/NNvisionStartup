@@ -75,7 +75,11 @@ should be again in /tkDNN folder
     mkdir layers debug
     ./darknet export <path-to-cfg-file> <path-to-weights> layers
 
-mv folders layers and debug inside the /tkDNN/build/custom_name/
+mv folders layers and debug inside the /tkDNN/build/custom_name/ or
+rewrite and use the scripts :
+
+    ./darknet_weight_to_tkDNN_1.sh
+    ./darknet_weight_to_tkDNN_2.sh
 go back to /tkDNN/build/
 you should see an executable file called “test_<custom_name>”
 launch it with the command:
