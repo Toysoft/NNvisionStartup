@@ -4,6 +4,8 @@ import docker
 from crontab import CronTab
 from docker.errors import APIError
 import logging
+from pathlib import Path
+from subprocess import call
 
 logging.basicConfig(level=logging.WARNING)
 
@@ -81,6 +83,20 @@ def install_update_docker_cron():
         cron.write()
 
 
+def apply_host_patch():
+    dir1 = Path('/home/nnvision/')
+    patch_already_applied = [file.name.split('.')[0] for file in dir1.iterdir() if file.name.endswith('.ok')]
+    dir2 = Path('/home/nnvision/conf/')
+    patch = [file for file in dir2.iterdir() if file.name.startswith('patch')]
+    need_reboot = False
+    for p in patch:
+        if p.name.split('.')[0] not in patch_already_applied:
+            call('sudo '+str(p), shell=True)
+            need_reboot = True
+    if need_reboot:
+        os.system('sudo reboot')
+
+
 if __name__ == "__main__":
     conf = {'docker_version': 1.5, 'reboot': False}
     try:
@@ -92,3 +108,4 @@ if __name__ == "__main__":
     update_docker(conf)
     reboot(conf)
     install_update_docker_cron()
+    apply_host_patch()

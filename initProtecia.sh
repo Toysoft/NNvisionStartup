@@ -20,6 +20,9 @@ fi
 ######### give reboot privilege ###############
 sudo -- bash -c 'echo "nnvision ALL=(root) NOPASSWD: /sbin/reboot" >  /etc/sudoers.d/reboot_privilege'
 
+######### give patch privilege ###############
+sudo -- bash -c 'echo "nnvision ALL=(root) NOPASSWD: /home/nnvision/conf/" >  /etc/sudoers.d/patch_privilege'
+
 ######### give nnvision docker permission ###############
 sudo -- bash -c "usermod -aG docker nnvision"
 
