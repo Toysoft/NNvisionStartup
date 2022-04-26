@@ -105,7 +105,8 @@ if __name__ == "__main__":
     except FileNotFoundError:
         logging.warning('can not find the docker.json file')
         pass
+    apply_host_patch()
     update_docker(conf)
     reboot(conf)
     install_update_docker_cron()
-    apply_host_patch()
+
