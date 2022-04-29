@@ -33,7 +33,7 @@ sudo systemctl set-default multi-user.target
 mkdir /home/nnvision/conf
 touch /home/nnvision/conf/settingslocal.py
 echo "
-INIT_PASS = 'gOX8983zqQg'
+INIT_PASS = 'jznsjoa3z54d'
 SERVER_WS = 'wss://dev.protecia.com/'
 SERVER = 'https://dev.protecia.com/'
 " >/home/nnvision/conf/settingslocal.py
