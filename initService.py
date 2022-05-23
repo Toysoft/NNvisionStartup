@@ -64,11 +64,26 @@ def update_docker(docker_conf):
 
 
 # SECOND PART IS TO CHECK IF REBOOT ------------------------------------------------------------------------------------
+def force_reboot():
+    try:
+        with open("../conf/force_reboot.json") as freboot:
+            do_reboot = json.load(freboot)
+        if do_reboot:
+            os.system('sudo reboot')
+            logging.error('force reboot --> yes')
+    except FileNotFoundError:
+        logging.error('can not find the force_reboot.json file')
+        pass
+
+
 def reboot(docker_conf):
     logging.warning('enter reboot')
     if docker_conf['reboot']:
-        logging.warning('do reboot')
+        logging.warning('reboot --> yes')
         os.system('sudo reboot')
+    else:
+        logging.warning('reboot --> no')
+    force_reboot()
 
 
 # THIRD PART IS TO INSTALL CRON (only important for first run, in case of change manually remove the installed cron) ---
