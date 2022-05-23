@@ -66,8 +66,8 @@ def update_docker(docker_conf):
 # SECOND PART IS TO CHECK IF REBOOT ------------------------------------------------------------------------------------
 def force_reboot():
     try:
-        with open("../conf/force_reboot.json") as freboot:
-            do_reboot = json.load(freboot)
+        with open("../conf/force_reboot.json") as conf_force_reboot:
+            do_reboot = json.load(conf_force_reboot)
         if do_reboot['force_reboot']:
             logging.error('force reboot --> yes')
             os.system('sudo reboot')
