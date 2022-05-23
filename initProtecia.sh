@@ -29,6 +29,9 @@ sudo -- bash -c "usermod -aG docker nnvision"
 ######### deactivate graphics mode ######################
 sudo systemctl set-default multi-user.target
 
+###### because init should now use jetpack 4.61 ##############
+touch /home/nnvision/patch1.ok
+
 #########
 mkdir /home/nnvision/conf
 touch /home/nnvision/conf/settingslocal.py
