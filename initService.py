@@ -68,7 +68,7 @@ def force_reboot():
     try:
         with open("../conf/force_reboot.json") as freboot:
             do_reboot = json.load(freboot)
-        if do_reboot:
+        if do_reboot['force_reboot']:
             logging.error('force reboot --> yes')
             os.system('sudo reboot')
     except FileNotFoundError:
