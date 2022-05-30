@@ -16,7 +16,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
                libpng-dev libtiff-dev libavcodec-dev libavformat-dev \
                libswscale-dev libv4l-dev libxvidcore-dev libx264-dev python3-opencv libopencv-dev \
                libgtk-3-dev libatlas-base-dev gfortran libpq-dev curl fail2ban \
-               ffmpeg  git-all  \
+               ffmpeg  git-all libeigen3-dev pkg-config libssl-dev zlib1g unzip \
                && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /NNvision
@@ -30,6 +30,8 @@ RUN pip install psutil Pillow requests onvif_zeep-roboticia cherrypy python-cron
 RUN git clone https://github.com/andreikop/python-ws-discovery.git && cd python-ws-discovery && \
     python3 setup.py install
 
+# get tkDNN
+git clone https://github.com/jouvencia/tkDNN.git
 
 RUN git clone https://github.com/AlexeyAB/darknet
 

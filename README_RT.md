@@ -34,7 +34,9 @@ Restart using the start.sh script
 ### 1 - Get the files
 Using gdown is a nice way to get files from google drive : 
 
+    git clone https://github.com/jouvencia/tkDNN.git # if not already done in dockerfile
     pip3 install gdown
+
    
 Get the cfg file 
 
@@ -46,7 +48,7 @@ Get the names files
     cd tkDNN/tests/darknet/names/
     gdown --id 1tPB8BwRFi1LHId02aGJjGxsrb9w5zHCW --output room_detector.names
 
-Make the .cpp code to build the engine. room_detector.cpp is an example
+Make the .cpp code to build the engine. yolo4_room_detector.cpp is an example
 and is already in the Jouvencia tkDNN repo. Here are the lines you should adapt to your case :
 
 ```
@@ -95,13 +97,13 @@ Use the script darknet_weight_to_tkDNN.sh <cfg> <weights> to make and copy
 the weights to the rights location (tkDNN/build/<custom_yolo>/).
 The script have to be launch from the darknet folder. 
 
-    ../../bash darknet_weight_to_tkDNN.sh room_detector.cfg room_detector.weights
+    bash ../../darknet_weight_to_tkDNN.sh room_detector.cfg room_detector.weights
 
 you should see an executable file called “test_<custom_name>”
 Notice that to build on Jetson Nano in fp32 you need 4Gb of swap memory.
 launch it with the command:
 
-    ./test_yolo4_nano_room_detector
+    ./test_yolo4_room_detector
 
 This will create the engine .rt file corresponding to your model.
 

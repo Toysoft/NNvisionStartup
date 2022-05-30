@@ -113,7 +113,7 @@ def apply_host_patch():
 
 
 if __name__ == "__main__":
-    conf = {'docker_version': 1.5, 'reboot': False}
+    conf = {'docker_version': 2.1, 'reboot': False}
     try:
         with open("../conf/docker.json") as version:
             conf = json.load(version)
