@@ -20,7 +20,6 @@ def update_docker(docker_conf):
         containers_list_to_delete = []
         for c in client.containers.list():
             if 'nnvision' in c.name:
-                containers_list_to_delete.append(c.name)
                 c.stop()
         client.containers.prune()
         # test if image is existing
