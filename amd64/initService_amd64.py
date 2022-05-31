@@ -17,8 +17,11 @@ def update_docker(docker_conf):
     if not client.containers.list(filters={'name': 'nnvision'+str(docker_conf['docker_version'])}):
         logging.warning('good container is not running')
         # stop all containers
+        containers_list_to_delete = []
         for c in client.containers.list():
-            c.stop()
+            if 'nnvision' in c.name:
+                containers_list_to_delete.append(c.name)
+                c.stop()
         client.containers.prune()
         # test if image is existing
         try:
