@@ -17,7 +17,6 @@ def update_docker(docker_conf):
     if not client.containers.list(filters={'name': 'nnvision'+str(docker_conf['docker_version'])}):
         logging.warning('good container is not running')
         # stop all containers
-        containers_list_to_delete = []
         for c in client.containers.list():
             if 'nnvision' in c.name:
                 c.stop()
