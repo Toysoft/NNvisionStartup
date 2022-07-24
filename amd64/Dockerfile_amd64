@@ -12,7 +12,7 @@ ENV LC_ALL en_US.UTF-8
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
                tzdata libxml2-dev libxslt-dev python3 python3-dev \
                wget mlocate build-essential openssh-client sshpass\
-               nano cron yasm cmake libjpeg-dev autossh \
+               nano cron yasm cmake libjpeg-dev autossh software-properties-common\
                libpng-dev libtiff-dev libavcodec-dev libavformat-dev \
                libswscale-dev libv4l-dev libxvidcore-dev libx264-dev python3-opencv libopencv-dev \
                libgtk-3-dev libatlas-base-dev gfortran libpq-dev curl fail2ban \

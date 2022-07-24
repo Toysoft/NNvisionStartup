@@ -9,7 +9,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-               tzdata libxml2-dev libxslt-dev \
+               tzdata libxml2-dev libxslt-dev software-properties-common\
                wget mlocate build-essential openssh-client sshpass\
                nano cron yasm cmake libjpeg-dev autossh \
                libpng-dev libtiff-dev libavcodec-dev libavformat-dev \
@@ -28,7 +28,7 @@ RUN git clone https://github.com/jouvencia/tkDNN.git
 RUN curl https://bootstrap.pypa.io/pip/3.6/get-pip.py -o get-pip.py && python3 get-pip.py
 
 # before it was onvif_zeep-roboticia
-RUN pip install psutil Pillow requests zeep onvif_zeep cherrypy python-crontab websockets filelock httpx gdown
+RUN pip install psutil Pillow requests zeep onvif_zeep cherrypy python-crontab websockets filelock httpx gdown Pygments
 
 # Install WSDiscovery from source because we need latest version
 RUN git clone https://github.com/andreikop/python-ws-discovery.git && cd python-ws-discovery && \

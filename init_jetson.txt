@@ -1,0 +1,21 @@
+git clone https://github.com/Protecia/NNvisionStartup.git
+
+updateprotecia
+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
+
+jznsjoa3z54d
+
+bash initprotecia.sh
+
+python3 initservice.py
+
+
+-----------
+Dockerfile
+
+pour le dev:
+updateprotecia
+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
+
+
+
