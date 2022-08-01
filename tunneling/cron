@@ -1,1 +1,1 @@
-*/5 * * * * sleep 200 && cd /home/nnvision/ && python3 /home/nnvision/check_tunnel.py > /home/nnvision/cron_tunnel.log 2>&1&
+*/5 * * * * sleep 200 && cd /home/nnvision/ && python3 /home/nnvision/NNvisionStartup/tunneling/check_tunnel.py > /home/nnvision/cron_tunnel.log 2>&1&
