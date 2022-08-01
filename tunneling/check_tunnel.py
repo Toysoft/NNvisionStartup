@@ -51,12 +51,14 @@ if not check_host(ip, port_redirect):
     for proc in psutil.process_iter():
         # check whether the process name matches
         if 'ssh' in proc.name() and 'sshd' not in proc.name():
-            try:
-                proc.kill()
-                print(f'Killing the ssh process {proc.name()}')
-            except psutil.AccessDenied:
-                print(f'can not kill the ssh process {proc.name()}')
-                pass
+            for string in proc.cmdline():
+                if str(port_redirect) in string:
+                    try:
+                        proc.kill()
+                        print(f'Killing the ssh process {proc.name()}')
+                    except psutil.AccessDenied:
+                        print(f'can not kill the ssh process {proc.name()}')
+                        pass
     command = f"./ssh_tunnel_safe.sh {port_ssh} {port_redirect} {local_host} {local_port} {user} {ip}"
     print("command is:", command)
     subprocess.call(command, shell=True)
