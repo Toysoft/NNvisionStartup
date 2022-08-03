@@ -59,7 +59,7 @@ if not check_host(ip, port_redirect):
                     except psutil.AccessDenied:
                         print(f'can not kill the ssh process {proc.name()}')
                         pass
-    command = f"./ssh_tunnel_safe.sh {port_ssh} {port_redirect} {local_host} {local_port} {user} {ip}"
+    command = f"/home/nnvision/NNvisionStartup/tunneling/ssh_tunnel_safe.sh {port_ssh} {port_redirect} {local_host} {local_port} {user} {ip}"
     print("command is:", command)
     subprocess.call(command, shell=True)
 
