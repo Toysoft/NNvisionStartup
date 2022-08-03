@@ -18,10 +18,7 @@ def update_docker(docker_conf):
     # test if container nnvision is running
     if not client.containers.list(filters={'name': 'nnvision'+str(docker_conf['docker_version'])}):
         logging.warning('good container is not running')
-        # stop all containers
-        for c in client.containers.list():
-            c.stop()
-        client.containers.prune()
+
         # test if image is existing
         try:
             client.images.get('roboticia/nnvision_jetson_nano:'+str(docker_conf['docker_version']))
@@ -34,6 +31,12 @@ def update_docker(docker_conf):
                          email='dockerpull@roboticia.com',
                          registry='https://index.docker.io/v1/')
             client.images.pull("roboticia/nnvision_jetson_nano:"+str(docker_conf['docker_version']))
+
+        # stop all containers
+        for c in client.containers.list():
+            c.stop()
+        client.containers.prune()
+
         # run nnvision
         client.containers.run(
             "roboticia/nnvision_jetson_nano:"+str(docker_conf['docker_version']),
@@ -124,4 +127,3 @@ if __name__ == "__main__":
     apply_host_patch()
     reboot(conf)
     install_update_docker_cron()
-
