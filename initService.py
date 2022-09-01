@@ -137,3 +137,4 @@ if __name__ == "__main__":
     apply_host_patch()
     reboot(conf)
     install_update_docker_cron()
+    install_reboot_midnight_cron()
