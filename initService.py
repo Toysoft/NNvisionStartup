@@ -101,6 +101,16 @@ def install_update_docker_cron():
         cron.write()
 
 
+def install_reboot_midnight_cron():
+    cron = CronTab(user=True)
+    if not any(cron.find_command('reboot')):
+        cmd = "/home/nnvision/reboot.sh "
+        cmd += " > /home/nnvision/cron_reboot.log 2>&1&"
+        job = cron.new(command=cmd)
+        job.every().dom()
+        cron.write()
+
+
 def apply_host_patch():
     dir1 = Path('/home/nnvision/')
     patch_already_applied = [file.name.split('.')[0] for file in dir1.iterdir() if file.name.endswith('.ok')]
