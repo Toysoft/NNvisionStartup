@@ -32,6 +32,13 @@ sudo systemctl set-default multi-user.target
 ###### because init should now use jetpack 4.61 ##############
 touch /home/nnvision/patch1.ok
 
+###### make reboot.sh
+touch /home/nnvision/reboot.sh
+echo "
+date
+sudo reboot
+" >/home/nnvision/reboot.sh
+
 #########
 mkdir /home/nnvision/conf
 touch /home/nnvision/conf/settingslocal.py
