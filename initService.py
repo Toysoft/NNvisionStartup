@@ -71,14 +71,15 @@ def update_docker(docker_conf):
 def check_force_reboot():
     try:
         with open("/home/nnvision/conf/conf.json") as conf_file:
-            dict_conf = json.load(conf_file)
-        key = dict_conf['key']
-        with open(f'/home/nnvision/conf/ping_{key}.json', 'r') as f:
-            ping = json.load(f)
-        delta_time = datetime.now() - datetime.strptime(ping['last'], '%Y-%m-%d %H:%M:%S')
-        if delta_time.total_seconds() > 500:
-            logging.warning('reboot --> yes')
-            os.system('sudo reboot')
+            list_conf = json.load(conf_file)
+        for dict_conf in list_conf:
+            key = dict_conf['key']
+            with open(f'/home/nnvision/conf/ping_{key}.json', 'r') as f:
+                ping = json.load(f)
+            delta_time = datetime.now() - datetime.strptime(ping['last'], '%Y-%m-%d %H:%M:%S')
+            if delta_time.total_seconds() > 500:
+                logging.warning('reboot --> yes')
+                os.system('sudo reboot')
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         logging.warning('can not find the docker.json file')
         pass
