@@ -6,6 +6,7 @@ from docker.errors import APIError
 import logging
 from pathlib import Path
 from subprocess import call
+from datetime import datetime
 
 logging.basicConfig(level=logging.WARNING)
 
@@ -67,15 +68,19 @@ def update_docker(docker_conf):
 
 
 # SECOND PART IS TO CHECK IF REBOOT ------------------------------------------------------------------------------------
-def force_reboot():
+def check_force_reboot():
     try:
-        with open("../conf/force_reboot.json") as conf_force_reboot:
-            do_reboot = json.load(conf_force_reboot)
-        if do_reboot['force_reboot']:
-            logging.error('force reboot --> yes')
+        with open("../conf/con.json") as conf_file:
+            dict_conf = json.load(conf_file)
+        key = dict_conf['key']
+        with open(f'home/nnvision/conf/ping_{key}.json', 'r') as f:
+            ping = json.load(f)
+        delta_time = datetime.now() - datetime.strptime(ping['last'], '%Y-%m-%d %H:%M:%S')
+        if delta_time.total_seconds() > 500:
+            logging.warning('reboot --> yes')
             os.system('sudo reboot')
-    except FileNotFoundError:
-        logging.error('can not find the force_reboot.json file')
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        logging.warning('can not find the docker.json file')
         pass
 
 
@@ -86,7 +91,6 @@ def reboot(docker_conf):
         os.system('sudo reboot')
     else:
         logging.warning('reboot --> no')
-    force_reboot()
 
 
 # THIRD PART IS TO INSTALL CRON (only important for first run, in case of change manually remove the installed cron) ---
@@ -138,3 +142,4 @@ if __name__ == "__main__":
     reboot(conf)
     install_update_docker_cron()
     install_reboot_midnight_cron()
+    check_force_reboot()
