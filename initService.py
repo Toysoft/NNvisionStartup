@@ -70,10 +70,10 @@ def update_docker(docker_conf):
 # SECOND PART IS TO CHECK IF REBOOT ------------------------------------------------------------------------------------
 def check_force_reboot():
     try:
-        with open("../conf/con.json") as conf_file:
+        with open("/home/nnvision/conf/conf.json") as conf_file:
             dict_conf = json.load(conf_file)
         key = dict_conf['key']
-        with open(f'home/nnvision/conf/ping_{key}.json', 'r') as f:
+        with open(f'/home/nnvision/conf/ping_{key}.json', 'r') as f:
             ping = json.load(f)
         delta_time = datetime.now() - datetime.strptime(ping['last'], '%Y-%m-%d %H:%M:%S')
         if delta_time.total_seconds() > 500:
