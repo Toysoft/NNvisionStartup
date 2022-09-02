@@ -77,6 +77,7 @@ def check_force_reboot():
             with open(f'/home/nnvision/conf/ping_{key}.json', 'r') as f:
                 ping = json.load(f)
             delta_time = datetime.now() - datetime.strptime(ping['last'], '%Y-%m-%d %H:%M:%S')
+            logging.warning(f'dalta time is {delta_time}')
             if delta_time.total_seconds() > 500:
                 logging.warning('reboot --> yes')
                 os.system('sudo reboot')
